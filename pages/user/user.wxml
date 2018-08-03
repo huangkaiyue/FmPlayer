@@ -1,8 +1,86 @@
-<!--pages/user/user.wxml-->
-<text>用户中心</text>
-<view>
-    <block  wx:for="{{zhihu}}">
-          <image src="{{item.images}}"  bindtap="bindViewTap" class="banner-image" width="100%" height="100%"/>
-          <text>{{item.title}}</text>
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
+  </view>
+
+
+</view>
+
+<view class="top-midtip2">  
+    <text class="word-tip2"></text>
+</view>
+
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <image src="/images/7.png" class="img"></image>
+      <text class="word-tip">个人信息</text>
+     
+    </view>
+    
+</view>
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <image src="/images/8.png" class="img"></image>
+      <text class="word-tip">我的活动</text>
+      
+    </view>
+    
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <image src="/images/9.png" class="img"></image>
+      <text class="word-tip">我的已购</text>
+      
+    </view>
+    
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <image src="/images/6.png" class="img"></image>
+      <text class="word-tip">赠送记录</text>
+      
+    </view>
+    
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <image src="/images/16.png" class="img"></image>
+      <text class="word-tip">优惠券</text>
+      
+    </view>
+    
+</view>
+
+<view class="top-midtip2">  
+    <text class="word-tip2">蓝豹智能</text>
 </view>

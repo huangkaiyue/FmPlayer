@@ -1,0 +1,28 @@
+<template name = "FMlistInfoData">
+<view class='FMlist  b-shadow' bindtap='toggleBtn' id="{{item.index}}">
+      <view class='nearFMlist-fl' data-index='{{index}}' data-arrayidx = '{{dataArrayIndex}}'>
+        <image src='{{item.logo}}'></image>
+      </view>
+      <view class='nearFMlist-fr'>
+        <view>
+         <text class='c-green'>{{item.AlbumName}}</text>
+        </view>
+       <view>
+         <text class='c-green'>{{item.date}}</text> 
+        </view>
+      </view>
+       </view>
+</template>
+
+
+/**
+typedef strtuct {
+  int index,
+  char *logo,
+  char *AlbumName;
+  char *date;
+}FMlistInfoData;
+FMlistInfoData item;
+item.logo=?
+item.AlbumName？
+**/
