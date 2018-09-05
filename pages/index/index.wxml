@@ -4,13 +4,12 @@
     <view class="search">
       <view class="df search_arr">
         <icon class="searchcion" size='20' type='search'></icon>
-        <input class="" disabled placeholder="搜索FM内容" value="{{searchValue}}"/>
+        <input class="sousuo_text" disabled placeholder="搜索FM内容" value="{{searchValue}}"/>
       </view>
     </view>
-    <view class='sousuo'>搜索</view>
   </view>
 
-    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">  
+    <swiper class="swiper" indicator-dots="true" autoplay="true" circular="true" interval="5000" duration="1000">  
       <block wx:for="{{movies}}" wx:for-index="index">  
         <swiper-item>  
           <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
@@ -24,7 +23,8 @@
     <view id = "top"></view>
     <block wx:for="{{dataArray}}" wx:for-item="FMlistInfoData" wx:for-index="dataArrayIndex">
       <block wx:for="{{FMlistInfoData}}" wx:for-item="item" wx:key="{{item.id}}" wx:for-index="index">
-        <template is = "FMlistInfoData" data='{{item:item,index:index,dataArrayIndex:dataArrayIndex}}'/> <!--将item和index都传到模版里去，不然模版中获取不到index-->
+        <!--将item和index都传到模版里去，不然模版中获取不到index-->
+        <template is = "FMlistInfoData" data='{{item:item,index:index,dataArrayIndex:dataArrayIndex}}'/> 
       </block>
     </block>
     <view id = "bottom"></view>

@@ -1,2 +1,24 @@
-<!--pages/message/message.wxml-->
-<text>message</text>
+<view class="section">
+
+  <view class="flex-wrp" style="flex-direction:row;">
+
+    <view class="flex-wrp" style=";flex-direction:column;">
+    <image src="/images824/comment.png" class="img" > </image>
+    <text class="word-tip">评论</text>
+    </view>
+
+  <view class="flex-wrp" style=";flex-direction:column;">
+    <image src="/images824/tices@my.png" class="img" ></image>
+    <text class="word-tip">@我</text>
+  </view>
+
+   <view class="flex-wrp" style="flex-direction:column;">
+    <image src="/images824/thumbs_up.png" class="img" ></image>
+    <text class="word-tip">点赞</text>
+    </view>
+  <view class="flex-wrp" style="flex-direction:column;">
+    <image src="/images824/system_message.png" class="img" ></image>
+    <text class="word-tip">系统通知</text>
+  </view>
+  </view>
+</view>

@@ -1,0 +1,156 @@
+/**musiclist.wxss**/
+.rotate-disk-container{
+
+  top: 5rpx;
+  height: 40%;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster{
+  width: 280rpx;
+  height: 290rpx;
+ 
+}
+
+.title-text{
+  font-weight: bolder;
+  line-height: 50rpx;
+  width: 55%;
+  margin-left: 0%;
+  top: 0rpx;
+  font-size: 26rpx;
+  color: rgb(8, 8, 8);
+}
+
+.trip-text{
+  width: 55%;
+  margin-left: 5%;
+  top: 0rpx;
+  font-size: 22rpx;
+  color:#aaa;
+}
+
+.btnbox2 {  
+  height: 300rpx;
+  background: rgba(247, 246, 246, 0);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  
+}
+
+.top-midtip{
+  background-color:#d4d6dbde;
+  display:flex;
+  padding:1px 10px;
+}
+
+.top-midtip2{
+  background-color:#e4e4e4;
+  display:flex;
+  padding:10px 10px;
+}
+
+.top-wrap{
+background-color:#99999900;
+display:flex;
+padding:10px 10px;
+left: 1px;
+}
+
+.img{
+width:20px;
+height:20px;
+
+}
+.img-nav{
+width:20px;
+height:20px;
+margin: 0 5rpx 0 460rpx;
+}
+
+
+.img-nav2{
+width:20px;
+height:20px;
+margin: 0 5rpx 0 490rpx;
+}
+
+.word-tip{
+color:#0c0b0b;
+margin-left:15px;
+}
+
+.word-tip4{
+color:#aaa;
+margin-left:5px;
+}
+
+.word-tip2{
+color:rgb(170, 170, 170);
+margin: 0 auto;
+font-size: 24rpx;
+}
+
+.word-tip3{
+color:#0c0b0b;
+font-size: 26rpx;
+margin-left:5px;
+}
+
+.word-tip5{
+color:#aaa;
+font-size: 26rpx;
+margin-left:2px;
+}
+
+.btnbox {
+  
+  height: 80rpx;
+  border-radius: 0rpx;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  color: #aaa;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  
+}
+ 
+.btnbox .btn {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin:0;
+  padding: 0;
+  top: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 0;
+  opacity: 0;
+  background: transparent;
+  z-index: 9;
+}
+ 
+.btnbox .text {
+  display: block;
+  line-height: 1.5;
+  text-align: center;
+}
+ 
+.btnbox_hover {
+  background: #aeadaf9c
+}
+
+page{
+  height: 35%;
+  background-color: #e4e4e4;
+  background-size:100%; 
+}

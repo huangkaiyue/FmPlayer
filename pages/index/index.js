@@ -1,6 +1,8 @@
 var util = require('../../utils/util.js')
 let str1 = JSON.stringify();
+var app = getApp();
 Page({
+
   onReady: function (e) {
   },
   data: {
@@ -13,32 +15,48 @@ Page({
     ],
     totalDataCount: 0, // 总数据条数
     currentPage: 0,
-    articles: [] // 存放所有的文章  
+    articles: [], // 存放所有的文章  
+    usercode: null,
+    userencry: null,
+    likestatus:true
+    
   },
   
-  /**
+/**
 * 生命周期函数--监听页面加载
 */
   onLoad: function (options) {
     var that = this
+    
+    
+    that.setData({
+      usercode: app.globalData.userCode,
+      userencry: app.globalData.encryData
+    });
+    
     //  加载网络数据 
     that.loadNetworkData();
-    that.loadMoreData();
-        // 加载本地数据
-    // that.loadlocalData();
+
+    // setTimeout(function () {
+    //   console.log('延时两秒进行的操作')
+    // }, 2000)
+    // 加载本地数据
+    //that.loadlocalData();
   },
 
   loadNetworkData: function(){
     var that = this //拿界面属性
-    var currentPage = 0;
-    var tips = "加载第" + (currentPage + 1) + "页";
-    console.log("load page " + (currentPage + 1));
+    var currentPage = 1;
+    var tips = "加载第" + (currentPage) + "页";
+    console.log("load page " + (currentPage));
     wx.showLoading({  //显示正在加载控件
       title: tips,
     })
+    
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
-      url: 'http://192.168.1.20:9000/XiaoManyao/music?method=Album',
+     // url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
+      url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
       data: {     //服务器指定要求上传数据
       },
       header: {
@@ -50,11 +68,13 @@ Page({
         var data = res.data; // 接口相应的json数据
         var Album = data.Album; // 接口中的Album对应了一个数组，这里取名为 Album
         var totalDataCount = Album.length;
+  
         console.log(Album);
         that.setData({        //渲染界面
           ["dataArray[" + currentPage + "]"]: Album,
           currentPage: currentPage,
-          totalDataCount: totalDataCount
+          totalDataCount: totalDataCount,
+          
         })
       }
     
@@ -65,15 +85,17 @@ Page({
     var that = this
     var currentPage = that.data.currentPage; // 获取当前页码
     currentPage+=1;
-    var tips = "加载第" + (currentPage + 1) + "页";
-    console.log("load page " + (currentPage + 1));
+    var tips = "正在加载";
+    console.log("load page " + (currentPage));
     wx.showLoading({
       title: tips,
     })
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
-      url: 'http://192.168.1.20:9000/XiaoManyao/music?method=Album',
-      data: {
+    
+      //url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page='+currentPage,
+      url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
+      data: {     //服务器指定要求上传数据
       },
       header: {
         'content-type': 'application/json'
@@ -83,14 +105,31 @@ Page({
         var data = res.data; // 接口相应的json数据
         var Album = data.Album; // 接口中的data对应了一个数组，这里取名为 articles
         var totalDataCount = Album.length;
-        console.log(Album);
+        var index = Album.index;
+       
+        wx:if(totalDataCount == 0){
+          console.log("数据加载完成.....");
+          that.setData({
+            currentPage: currentPage,
+          })
+          return;
+        }
+        console.log("return : "+Album);
         that.setData({
           ["dataArray[" + currentPage + "]"]: Album,
           currentPage: currentPage,
-          totalDataCount: totalDataCount
+          totalDataCount: totalDataCount,
         })
-      }
+      },
     })
+  },
+  /**
+  * 页面相关事件处理函数--监听用户下拉动作
+  */
+  onPullDownRefresh: function () {
+    var that = this
+    that.loadMoreData();
+  
   },
 
   /**
@@ -114,13 +153,44 @@ Page({
     })
   },
 
+  //跳转到搜索页
+  suo:function(e){
+    wx.navigateTo({
+      url: '../search/search',
+    })
+  },
+
+  bindLike:function(event){
+      console.log(this.data.likestatus);
+
+      if (this.data.likestatus === true){
+        //this.play()
+        this.setData({ likestatus: false })
+      }
+      console.log(this.data.likestatus);
+  },
+
   //切换到播放界面
   toggleBtn: function (event) {
+    
+    var playIndex = event.currentTarget.id;
+    var viewDataSet = event.currentTarget.dataset;
+    var viewlogo = viewDataSet.logo;
+    var ablName = viewDataSet.name;
+    var ablMessage = viewDataSet.message;
+  
+    var playApp = getApp();
+    playApp.globalData.playImage = viewlogo;
+    playApp.globalData.albName = ablName;
+    playApp.globalData.ablMessage = ablMessage;
+    
+    //playImage
     wx.navigateTo({
       
-      url: '../player/player',
+      //url: '../player/player?playIndex=' + playIndex,
+      url: './musiclist/musiclist?playIndex=' + playIndex,
       success: function (res) {
-        // success 
+        console.log(res);
       },
       fail: function () {
         // fail 
@@ -130,4 +200,5 @@ Page({
       }
     })
   },
+  
 })

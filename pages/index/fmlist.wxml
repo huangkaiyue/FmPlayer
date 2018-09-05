@@ -1,17 +1,27 @@
 <template name = "FMlistInfoData">
-<view class='FMlist  b-shadow' bindtap='toggleBtn' id="{{item.index}}">
-      <view class='nearFMlist-fl' data-index='{{index}}' data-arrayidx = '{{dataArrayIndex}}'>
-        <image src='{{item.logo}}'></image>
+<view class='FMlist  b-shadow' bindtap='toggleBtn' id="{{item.index}}" data-logo="{{item.logo}}" data-name="{{item.AlbumName}}" data-message="{{item.albmMessage}}"> 
+      <view class='nearFMlist-fl' data-index='{{index}}'  data-arrayidx = '{{dataArrayIndex}}'>
+        <image class="logo-icon" src='{{item.logo}}' ></image>
       </view>
+      
+      <view>
+         <text class="title-text">{{item.AlbumName}}</text>
+      </view>
+
       <view class='nearFMlist-fr'>
         <view>
-         <text class='c-green'>{{item.AlbumName}}</text>
+          <text class='c-green'>{{item.author}}</text>
         </view>
-       <view>
-         <text class='c-green'>{{item.date}}</text> 
-        </view>
-      </view>
+
+        <view>
+         <image src="{{likestatus === true ? '/images824/like01.png' : '/images824/like02.png'}}" class="icon-click" bindtap="bindLike" ></image>
+         <text class='c-green' class="data-click">2342</text> 
+         <image src="../../assets/img/wechat.png" class="icon-click" ></image>
+         <text class='c-green' class="msg-comment">89</text> 
+         <text class='c-green' class="date-item">{{item.date}}</text> 
        </view>
+      </view>
+</view>
 </template>
 
 

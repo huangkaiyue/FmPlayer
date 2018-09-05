@@ -1,0 +1,47 @@
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="playChick"></button>
+    <view class="top-wrap">
+      <text class="word-tip3">播放</text>
+      
+    </view>
+    
+</view>
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<form bindsubmit="pushChick" report-submit='true' >
+  <view class="btnbox" hover-class="btnbox_hover">
+    <button form-type="submit" class="btn"></button>
+    <view class="top-wrap">
+      <text class="word-tip3">推送</text>    
+    </view> 
+  </view>
+</form>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<form bindsubmit="downloadChick" report-submit='true' >
+  <view class="btnbox" hover-class="btnbox_hover">
+    <button form-type="submit" class="btn"></button>
+    <view class="top-wrap">
+      <text class="word-tip3">下载</text>    
+    </view> 
+  </view>
+</form>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+
+<view class="top-midtip2">  
+    <text class="word-tip2">蓝豹智能</text>
+</view>

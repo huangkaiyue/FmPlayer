@@ -6,6 +6,7 @@ const app = getApp()
 Page({
   data: {
     motto: '',
+    userCode: null,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -21,8 +22,12 @@ Page({
       url: '../logs/logs'
     })
   },
+  
   onLoad: function () {
+    var that = this;
+  
     if (app.globalData.userInfo) {
+      
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -48,13 +53,61 @@ Page({
         }
       })
     }
+    that.getweixinData();
   },
+  //-------------- onload --------------
+
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  personalChick:function(e){
+    console.log("personalChick ");
+    wx.navigateTo({
+      url: './userinfo/userinfo',
+    })
+  },
+
+  bindDevice:function(e){
+    console.log("bindDevice ");
+    wx.navigateTo({
+      url: './bindEquipment/bindEquipment',
+    })
+  },
+
+  activityClick: function(e){
+    console.log("暂无活动");
+    wx.navigateTo({
+      url: './userActivity/userActivity',
+    })
+  },
+  //获取unionId /openid
+  getweixinData:function() {
+    var that = this
+    var code = app.globalData.userCode;
+    var encry = app.globalData.encryData;
+    console.log("getweixinData code : " + code);
+    console.log("getweixinData encry : " + encry);
+    // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
+    wx.request({
+      url: 'http://192.168.1.20:9000/XiaoManyao/weixinAuthInter',
+      // url: 'https://www.lanbaoai.cn/XiaoManyao/weixinAuthInter',
+      data: { msgtype: "getunionId", usercode: code, userencryData: encry },
+      method: "post",
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        var data = res.data; // 接口相应的json数据
+        app.globalData.unionId = data.unionId;
+        app.globalData.bindPhone = data.phone;
+        console.log(res.data);
+      },
     })
   }
 })

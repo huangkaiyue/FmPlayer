@@ -1,10 +1,17 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/musiclist/musiclist",
+    "pages/index/chooselist/chooselist",
     "pages/logs/logs",
     "pages/user/user",
+    "pages/user/userinfo/userinfo",
+    "pages/user/bindEquipment/bindEquipment",
+    "pages/user/userActivity/userActivity",
     "pages/message/message",
-    "pages/player/player"
+    "pages/player/player",
+    "pages/search/search"
+   
   ],
   "tabBar": {
     "color": "#a9b7b7",
@@ -31,4 +38,5 @@
       }
     ]
   }
+  
 }

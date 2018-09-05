@@ -1,0 +1,32 @@
+
+<view class="btnbox" hover-class="btnbox_hover">
+
+    <view class="top-wrap">
+      <image src="/images/linyichen.jpg" class="img"></image>
+    </view>
+  
+</view>
+
+<view class="word-tip2">手机号：
+    <input class="input" name="userName" placeholder="请输入手机号" type="number"
+    bindinput ="devsnInput"/>
+</view>
+
+
+<button type="{{backStatus === true ? 'primary':'default'}}" class="btn" bindtap="btnClick">{{motto}}</button>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox2" hover-class="btnbox_hover">
+    <view class="top-wrap">
+      <view  class="word-tip3" bindtap="click">设备列表:</view>  
+    </view>
+</view>
+
+<view>
+    <block wx:for="{{names}}" wx:key="item"> 
+      <view class="word-tip2" bittap="clickdev">{{item.sn}}</view>
+    </block>
+</view>

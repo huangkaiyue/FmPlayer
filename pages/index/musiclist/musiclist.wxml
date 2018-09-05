@@ -1,0 +1,50 @@
+<view class="btnbox2" hover-class="btnbox_hover">
+  <view class="rotate-disk-container"> 
+    <image class="poster" src="{{coverImg}}"></image>
+  </view>
+
+  <view>
+      <view>
+        <text  class="title-text" >{{ablName}}</text> 
+      </view>
+    
+      <view>
+        <text  class="trip-text" >{{ablMessage}}</text>  
+      </view>
+  </view>
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="playallChick"></button>
+    <view class="top-wrap">
+      <image src="../../../assets/img/play.png" class="img"></image>
+      <text class="word-tip">播放全部</text>
+      <text class="word-tip4">({{audioList.length}})</text>
+    </view>
+    
+</view>
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view wx:for="{{audioList}}" wx:for-index="idx" wx:key="audio" wx:for-item="itemName"> 
+  <view class="btnbox"  hover-class="btnbox_hover">
+    <button class="btn" data-url="{{itemName.url}}" data-index="{{idx}}" bindtap="checkChick"></button>
+    <view class="top-wrap">
+      <text class="word-tip5">{{idx+1}}</text>
+      <text class="word-tip3">{{itemName.musicname}}</text>
+    </view>   
+  </view>
+
+  <view class="top-midtip">  
+    <text class="word-tip"></text>
+  </view>
+</view>
+
+<view class="top-midtip2">  
+    <text class="word-tip2">蓝豹智能</text>
+</view>

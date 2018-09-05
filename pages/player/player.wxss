@@ -146,6 +146,16 @@
   height: 80rpx;
 }
 
+.icon-loop{
+  /*background-image: url('../../assets/img/icon.png');
+  background-repeat: no-repeat;
+  background-position: -136px -153px;*/
+  margin: 0 20rpx;
+  width: 98rpx;
+  height: 98rpx;
+  
+}
+
 /*5*/
 .list{
   position: absolute;

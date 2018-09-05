@@ -1,0 +1,56 @@
+/* pages/user/bindEquipment/bindEquipment.wxss */
+
+.btn{
+  margin-top: 30px;
+  width: 700rpx;
+  border-radius: 5rpx;
+}
+
+.bt-hover{
+  margin-top: 10px;
+  height: 80rpx;
+  width: 700rpx;
+  border-radius: 5rpx;
+  background-color: blue;
+}
+
+.btnbox {
+  border-radius: 0rpx;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+}
+ 
+.btnbox2 {
+  border-radius: 0rpx;
+  background: #fff;
+  display: flex;
+}
+
+.top-wrap{
+background-color:#99999900;
+display:flex;
+padding:10px 10px;
+
+}
+
+.img{
+width:90px;
+height:90px;
+}
+
+.word-tip{
+color:#0c0b0b;
+font-size: 35rpx;
+}
+
+.word-tip2{
+color:#0c0b0b;
+font-size: 35rpx;
+padding:5px 12px;
+}
+
+.word-tip3{
+color:#0c0b0b;
+font-size: 35rpx;
+}

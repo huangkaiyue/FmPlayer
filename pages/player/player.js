@@ -1,31 +1,72 @@
 //index.js
 //获取应用实例
-import audioList from './data.js'
+
 var app = getApp()
 Page({
   data: {
-    audioList: audioList,
+    audioList: '',
+    coverImg: null,
     audioIndex: 0,
     pauseStatus: true,
     listShow: false,
     timer: '',
     currentPosition: 0,
     duration: 0,
+    dataPlay:null
   },
-  onLoad: function () {
+  onLoad: function (options) {
+  
+    var audioIndexNow = options.playIndex;
+    console.log("接收到得参数是index="+options.playIndex);
+
+    var playApp = getApp();
+    var playImage = playApp.globalData.playImage;
+    console.log("接收到得参数是image=" + playImage);
+    
     console.log('onLoad')
     console.log(this.data.audioList.length)
+     
+    var that = this;
+    var musiclist = app.globalData.musicList;
+    that.setData({
+      audioList: musiclist,
+      coverImg: playImage,
+      audioIndex: audioIndexNow
+    })
+
+    // wx.request({
+    //   //url: 'http://192.168.1.20:9000/XiaoManyao/music?method=Albumlist&index=' + options.playIndex,
+    //   url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=Albumlist&index=' + options.playIndex,
+    //   data: {
+    //   },
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     wx.hideLoading();
+    //     var data = res.data; // 接口相应的json数据
+    //     var musiclist = data.musiclist; // 接口中的data对应了一个数组，这里取名为 articles
+    //     console.log(musiclist);
+
+    //     that.setData({
+    //       audioList: musiclist,
+    //       coverImg: playImage
+    //     })
+    //   }
+    // })
+
     //  获取本地存储存储audioIndex
-    var audioIndexStorage = wx.getStorageSync('audioIndex')
-    console.log(audioIndexStorage)
-    if (audioIndexStorage) {
-      this.setData({ audioIndex: audioIndexStorage })
-    }
+    // var audioIndexStorage = wx.getStorageSync('audioIndex')
+    // console.log(audioIndexStorage)
+    // if (audioIndexStorage) {
+    //   this.setData({ audioIndex: audioIndexStorage })
+    // }
   },
+
   onReady: function (e) {
     console.log('onReady')
     // 使用 wx.createAudioContext 获取 audio 上下文 context
-    // this.audioCtx = wx.createAudioContext('audio')
+     this.audioCtx = wx.createAudioContext('audio')
   },
   bindSliderchange: function (e) {
     // clearInterval(this.data.timer)
@@ -48,7 +89,7 @@ Page({
     })
   },
   bindTapPrev: function () {
-    console.log('bindTapNext')
+    console.log('bindTapPrev')
     let length = this.data.audioList.length
     let audioIndexPrev = this.data.audioIndex
     let audioIndexNow = audioIndexPrev
@@ -113,6 +154,18 @@ Page({
       listShow: true
     })
   },
+  bindTapLoop: function () {
+    console.log('bindTapLoop')
+    console.log(this.data.pauseStatus)
+
+    if (this.data.loopStatus === true) {
+      //this.play()
+      this.setData({ loopStatus: false })
+    } else {
+      //wx.pauseBackgroundAudio()
+      this.setData({ loopStatus: true })
+    }
+  },
   bindTapChoose: function (e) {
     console.log('bindTapChoose')
     console.log(e)
@@ -131,9 +184,10 @@ Page({
   play() {
     let { audioList, audioIndex } = this.data
     wx.playBackgroundAudio({
-      dataUrl: audioList[audioIndex].src,
-      title: audioList[audioIndex].name,
-      coverImgUrl: audioList[audioIndex].poster
+      dataUrl: audioList[audioIndex].url,
+      title: audioList[audioIndex].musicname,
+      // coverImgUrl: audioList[audioIndex].poster
+      coverImgUrl:this.data.coverImg
     })
     let that = this
     let timer = setInterval(function () {
@@ -144,7 +198,7 @@ Page({
   setDuration(that) {
     wx.getBackgroundAudioPlayerState({
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         let { status, duration, currentPosition } = res
         if (status === 1 || status === 0) {
           that.setData({

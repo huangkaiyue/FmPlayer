@@ -1,0 +1,116 @@
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">头像</text>
+      <image src="{{userInfo.avatarUrl}}" class="img"></image>
+    </view>
+  
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">昵称</text>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">性别</text>
+      <image src="/images/a6a.png" class="img-nav"></image>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">生日</text>
+      <image src="/images/a6a.png" class="img-nav"></image>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">真实姓名</text>
+      <image src="/images/a6a.png" class="img-nav3"></image>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">手机号</text>
+      <image src="/images/a6a.png" class="img-nav2"></image>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">地址</text>
+      <image src="/images/a6a.png" class="img-nav"></image>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">行业</text>
+      <image src="/images/a6a.png" class="img-nav"></image>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">公司</text>
+      <image src="/images/a6a.png" class="img-nav"></image>
+    </view> 
+</view>
+
+<view class="top-midtip">  
+    <text class="word-tip"></text>
+</view>
+
+<view class="btnbox" hover-class="btnbox_hover">
+    <button class="btn" bindtap="btnClick"></button>
+    <view class="top-wrap">
+      <text class="word-tip">职位</text>
+      <image src="/images/a6a.png" class="img-nav"></image>
+    </view> 
+</view>

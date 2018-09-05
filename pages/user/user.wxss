@@ -44,6 +44,19 @@ width:20px;
 height:20px;
 
 }
+.img-nav{
+width:20px;
+height:20px;
+margin: 0 5rpx 0 460rpx;
+}
+
+
+.img-nav2{
+width:20px;
+height:20px;
+margin: 0 5rpx 0 490rpx;
+}
+
 .word-tip{
 color:#0c0b0b;
 margin-left:15px;

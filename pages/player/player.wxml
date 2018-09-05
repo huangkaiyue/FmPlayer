@@ -2,7 +2,7 @@
 <view class="container">
   <!--第一层层：背景图背景图，高斯模糊-->
   <view class="bg">
-    <image class="poster" mode="scaleToFill" src="{{audioList[audioIndex].poster}}"></image>
+    <image class="poster" mode="scaleToFill" src="{{coverImg}}"></image>
   </view>
   <!--第二层层：灰色蒙层-->
   <view class="bg-gray">
@@ -12,14 +12,15 @@
     <!--旋转图-->
     <view class="rotate-disk-container">
       <view class="rotate-disk {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}">
-        <image class="poster" src="{{audioList[audioIndex].poster}}"></image>
+        <image class="poster" src="{{coverImg}}"></image>
       </view>
     </view>
     <!--操作-->
     <view class="title-container">
       <view class="title-left"></view>
       <view class="text">
-        <view><text class="name">{{audioList[audioIndex].name}}</text></view>
+        <view><text class="name">{{audioList[audioIndex].musicname}}</text></view>
+        <view><text class="name">{{audioList[audioIndex].author}}</text></view>
         <!--<view><text class="author">-- {{audioList[audioIndex].author}} --</text></view>-->
       </view>
       <image src="../../assets/img/list.png" class="icon-list" bindtap="bindTapList"></image>
@@ -37,13 +38,19 @@
       <text class="slider-time">{{duration === 0 ? '' : duration}}</text>
     </view>
     <view class="operation-container">
+      <image src="" class="icon-prev" bindtap=""></image>
       <image src="../../assets/img/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
       <image
         src="{{pauseStatus === false ? '../../assets/img/pause.png' : '../../assets/img/play.png'}}"
         class="icon-play" bindtap="bindTapPlay"
         >
-        </image>
+      </image>
       <image src="../../assets/img/next.png" class="icon-next" bindtap="bindTapNext"></image>
+      <image mode="widthFix"
+        src="{{loopStatus === true ? '../../assets/img/a_y.png' : '../../assets/img/a_p.png'}}"
+        class="icon-loop" bindtap="bindTapLoop"
+        >
+      </image>
     </view>
   </view>
   <!--第五层：列表页-->

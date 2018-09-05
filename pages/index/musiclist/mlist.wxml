@@ -1,0 +1,23 @@
+<template name = "FMlistInfoData">
+<view class='FMlist  b-shadow' bindtap='toggleBtn' id="{{item.index}}" data-logo="{{item.logo}}" data-name="{{item.AlbumName}}" data-message="{{item.albmMessage}}"> 
+      <view class='nearFMlist-fl' data-index='{{index}}'  data-arrayidx = '{{dataArrayIndex}}'>
+        <view class="btnbox" data-url="{{item.url}}" hover-class="btnbox_hover">
+    <button class="btn" bindtap="checkChick"></button>
+    <view class="top-wrap">
+      <text class="word-tip5">{{idx+1}}</text>
+      <text class="word-tip3">{{item[idx].musicname}}</text>
+    </view>   
+  </view>
+
+  <view class="top-midtip">  
+    <text class="word-tip"></text>
+  </view>
+      </view>
+      
+     
+</view>
+</template>
+
+  
+  
+  

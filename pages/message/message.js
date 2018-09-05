@@ -15,7 +15,7 @@ Page({
     console.log('start onload user menu')
     var that = this
     wx.request({
-      url: 'http://192.168.1.20:9000/XiaoManyao/login',
+      url: 'https://www.lanbaoai.cn/XiaoManyao/login',
       data: {//这里写你要请求的参数
       },
       headers: {
