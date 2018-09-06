@@ -23,16 +23,3 @@
       </view>
 </view>
 </template>
-
-
-/**
-typedef strtuct {
-  int index,
-  char *logo,
-  char *AlbumName;
-  char *date;
-}FMlistInfoData;
-FMlistInfoData item;
-item.logo=?
-item.AlbumName？
-**/

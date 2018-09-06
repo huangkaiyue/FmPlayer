@@ -1,19 +1,8 @@
-
-<view class="btnbox" hover-class="btnbox_hover">
-
-    <view class="top-wrap">
-      <image src="/images/linyichen.jpg" class="img"></image>
-    </view>
-  
+<!--DevList/DevList.wxml-->
+<view class="flex-wrp" style="flex-direction:row;">绑定用户：
+    <input class="input"  placeholder="请输入手机号" type="number" bindinput ="devsnInput" value="{{inputDevTxt}}" />
 </view>
 
-<view class="word-tip2">手机号：
-    <input class="input" name="userName" placeholder="请输入手机号" type="number"
-    bindinput ="devsnInput"/>
-</view>
-
-
-<button type="{{backStatus === true ? 'primary':'default'}}" class="btn" bindtap="btnClick">{{motto}}</button>
 
 <view class="top-midtip">  
     <text class="word-tip"></text>
@@ -21,12 +10,16 @@
 
 <view class="btnbox2" hover-class="btnbox_hover">
     <view class="top-wrap">
-      <view  class="word-tip3" bindtap="click">设备列表:</view>  
+      <view  class="devListCss" bindtap="click">设备列表</view>  
     </view>
 </view>
 
 <view>
-    <block wx:for="{{names}}" wx:key="item"> 
+    <block wx:for="{{names}}" wx:key="item" wx:for-index="index"> 
+    <view class="top-wrap">
+      <image class="logo-icon" src='{{item.logo}}' ></image>
       <view class="word-tip2" bittap="clickdev">{{item.sn}}</view>
+    </view>
+    <view class="divLine"></view>
     </block>
 </view>

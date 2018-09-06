@@ -1,24 +1,28 @@
-<view class="section">
+<view class="table">
+  <!-- section  flex-direction:row  设置水平布局 ，justify-content:space-around 设置每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍 -->
+  <view class="flex-wrp" style="flex-direction:row;justify-content:space-around" >   
 
-  <view class="flex-wrp" style="flex-direction:row;">
-
-    <view class="flex-wrp" style=";flex-direction:column;">
-    <image src="/images824/comment.png" class="img" > </image>
+    <view class="flex-wrp" style="flex-direction:column;">
+    <image src="/images824/comment.png" class="img" catchtap="comment_but"> </image>
     <text class="word-tip">评论</text>
     </view>
 
-  <view class="flex-wrp" style=";flex-direction:column;">
-    <image src="/images824/tices@my.png" class="img" ></image>
+  <view class="flex-wrp" style="flex-direction:column;">
+    <image src="/images824/tices@my.png" class="img" catchtap="tices_my_but"></image>
     <text class="word-tip">@我</text>
   </view>
 
    <view class="flex-wrp" style="flex-direction:column;">
-    <image src="/images824/thumbs_up.png" class="img" ></image>
+    <image src="/images824/thumbs_up.png" class="img" catchtap="thumbs_up_but"></image>
     <text class="word-tip">点赞</text>
     </view>
   <view class="flex-wrp" style="flex-direction:column;">
-    <image src="/images824/system_message.png" class="img" ></image>
+    <image src="/images824/system_message.png" class="img" catchtap="system_message_but"></image>
     <text class="word-tip">系统通知</text>
   </view>
   </view>
+</view>
+
+<view class="table_message">
+<text class="word-tip">私信列表</text>
 </view>
