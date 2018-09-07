@@ -7,6 +7,8 @@ Page({
    */
   data: {
     hasUserInfo: false,
+    sex: [{ id: "0", name: "男", checked: "true" }, { id: "1", name: "女" }],
+    sexId: "0",   // 默认是0 => 男
     userInfo: {}
   },
 
@@ -102,5 +104,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  radioChange: function (e) {    // 选择男女
+    var value = e.detail.value;
+    this.setData({
+      sexId: value
+    })
   }
 })

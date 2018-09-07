@@ -34,33 +34,29 @@ Page({
       audioIndex: audioIndexNow
     })
 
-    // wx.request({
-    //   //url: 'http://192.168.1.20:9000/XiaoManyao/music?method=Albumlist&index=' + options.playIndex,
-    //   url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=Albumlist&index=' + options.playIndex,
-    //   data: {
-    //   },
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     wx.hideLoading();
-    //     var data = res.data; // 接口相应的json数据
-    //     var musiclist = data.musiclist; // 接口中的data对应了一个数组，这里取名为 articles
-    //     console.log(musiclist);
+    this.play()
+    this.setData({ pauseStatus: false })
 
-    //     that.setData({
-    //       audioList: musiclist,
-    //       coverImg: playImage
-    //     })
-    //   }
-    // })
-
-    //  获取本地存储存储audioIndex
-    // var audioIndexStorage = wx.getStorageSync('audioIndex')
-    // console.log(audioIndexStorage)
-    // if (audioIndexStorage) {
-    //   this.setData({ audioIndex: audioIndexStorage })
-    // }
+    // listen play status
+    // 页面初始化 options为页面跳转所带来的参数
+		/**
+		 * 监听音乐播放
+		 */
+    wx.onBackgroundAudioPlay(function () {
+      console.log('onBackgroundAudioPlay')
+    })
+		/**
+		 * 监听音乐暂停
+		 */
+    wx.onBackgroundAudioPause(function () {
+      console.log('onBackgroundAudioPause')
+    })
+		/**
+		 * 监听音乐停止
+		 */
+    wx.onBackgroundAudioStop(function () {
+      console.log('onBackgroundAudioStop')
+    })
   },
 
   onReady: function (e) {

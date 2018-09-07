@@ -23,13 +23,15 @@
     <text class="word-tip"></text>
 </view>
 
-<view class="btnbox" hover-class="btnbox_hover">
-    <button class="btn" bindtap="btnClick"></button>
-    <view class="top-wrap">
-      <text class="word-tip">性别</text>
-      <image src="/images/a6a.png" class="img-nav"></image>
-    </view> 
-</view>
+        <view class="label-list">
+            <view class="label">性别</view>
+            <radio-group class="radio-group" bindchange="radioChange">
+                <label class="radio" wx:for="{{sex}}" wx:key="{{index}}">
+                    <radio value="{{item.id}}"  
+                    checked="{{sexId == item.id}}"/>{{item.name}}
+                </label>
+            </radio-group>
+        </view>
 
 <view class="top-midtip">  
     <text class="word-tip"></text>

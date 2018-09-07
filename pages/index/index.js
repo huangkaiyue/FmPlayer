@@ -55,8 +55,8 @@ Page({
     
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
-     // url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
-      url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
+     url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
+      // url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
       data: {     //服务器指定要求上传数据
       },
       header: {
@@ -93,8 +93,8 @@ Page({
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
     
-      //url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page='+currentPage,
-      url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
+      url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page='+currentPage,
+      // url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
       data: {     //服务器指定要求上传数据
       },
       header: {
@@ -109,12 +109,13 @@ Page({
        
         wx:if(totalDataCount == 0){
           console.log("数据加载完成.....");
+          currentPage -=1;
           that.setData({
             currentPage: currentPage,
           })
           return;
         }
-        console.log("return : "+Album);
+        console.log(Album);
         that.setData({
           ["dataArray[" + currentPage + "]"]: Album,
           currentPage: currentPage,
