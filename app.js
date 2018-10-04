@@ -1,13 +1,17 @@
 //app.js
-
 App({
-  onLaunch: function() {
+  onLaunch: function () {
     var that = this;
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    console.log("测试登陆");
+
+    that.globalData.unionId = wx.getStorageSync("unionId");
+    if (that.globalData.unionId == '') {
+      console.log("wx getStorage not save unionId");
+      // that.getweixinData();
+    } else {
+      that.globalData.bindPhone = wx.getStorageSync("bindPhone");
+      console.log("wx getStorage :" + that.globalData.unionId);
+    }   
+
     // 登录
     wx.login({
       success: res => {
@@ -50,6 +54,7 @@ App({
     })
   },
 
+
   //获取unionId /openid
   getServerUserData: function () {
     var that = this
@@ -61,8 +66,7 @@ App({
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
 
-      url: 'https://192.168.1.20:9000/XiaoManyao/weixinAuthInter',
-      // url: 'https://www.lanbaoai.cn/XiaoManyao/weixinAuthInter',
+      url: app.globalData.serverUrl + 'weixinAuthInter',
       data: { msgtype: "getunionId", usercode: code, userencryData: encry },
       method: "post",
       header: {
@@ -83,11 +87,13 @@ App({
     userCode: null,
     encryData: null,
     unionId: null,
-    bindPhone:null,
+    bindPhone: null,
     ablName: null,
     ablMessage: null,
     musicCurrentUrl: null,
     devsn: null,
-    musicList: ''
+    musicList: '',
+    serverUrl: 'http://192.168.1.20:9000/XiaoManyao/'
+    // serverUrl: 'https://www.lanbaoai.cn/XiaoManyao/'
   }
 })

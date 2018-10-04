@@ -95,7 +95,7 @@ Page({
   GetServerMessage: function(){ //获取服务器消息
     var that = this
     wx.request({
-      url: 'https://www.lanbaoai.cn/XiaoManyao/login',
+      url: app.globalData.serverUrl +'login',
       data: {//这里写你要请求的参数
       },
       headers: {

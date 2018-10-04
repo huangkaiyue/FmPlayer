@@ -4,8 +4,7 @@ Page({
   data: {     //页面的初始数据
     usrPhone: '',
     ServerPhone: '',
-    //weixinUrl:'https://www.lanbaoai.cn/XiaoManyao/weixinAuthInter'
-    weixinUrl: 'http://192.168.1.20:9000/XiaoManyao/weixinAuthInter',
+    weixinUrl: app.globalData.serverUrl +'weixinAuthInter',
     inputDevTxt: ''
   },
   /**
@@ -116,8 +115,7 @@ Page({
     var phone = '13688999416';
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
-      url: 'http://192.168.1.20:9000/XiaoManyao/weixinAuthInter',
-      // url: 'https://www.lanbaoai.cn/XiaoManyao/weixinAuthInter',
+      url: app.globalData.serverUrl +'weixinAuthInter',
       data: { msgtype: "scandev", unionId: unionId, phone: phone },
       method: "post",
       header: {

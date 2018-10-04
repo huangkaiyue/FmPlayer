@@ -16,8 +16,6 @@ Page({
     totalDataCount: 0, // 总数据条数
     currentPage: 0,
     articles: [], // 存放所有的文章  
-    usercode: null,
-    userencry: null,
     likestatus:true
     
   },
@@ -27,13 +25,7 @@ Page({
 */
   onLoad: function (options) {
     var that = this
-    
-    
-    that.setData({
-      usercode: app.globalData.userCode,
-      userencry: app.globalData.encryData
-    });
-    
+        
     //  加载网络数据 
     that.loadNetworkData();
 
@@ -41,7 +33,8 @@ Page({
     //   console.log('延时两秒进行的操作')
     // }, 2000)
     // 加载本地数据
-    //that.loadlocalData();
+    //that.loadlocalData(); 
+
   },
 
   loadNetworkData: function(){
@@ -55,8 +48,7 @@ Page({
     
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
-     url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
-      // url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
+      url: app.globalData.serverUrl +'music?method=moreAlbum&page=' + currentPage,
       data: {     //服务器指定要求上传数据
       },
       header: {
@@ -93,8 +85,7 @@ Page({
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
     
-      url: 'http://192.168.1.20:9000/XiaoManyao/music?method=moreAlbum&page='+currentPage,
-      // url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=moreAlbum&page=' + currentPage,
+      url: app.globalData.serverUrl +'music?method=moreAlbum&page='+currentPage,
       data: {     //服务器指定要求上传数据
       },
       header: {

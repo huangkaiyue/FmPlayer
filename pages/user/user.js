@@ -53,7 +53,14 @@ Page({
         }
       })
     }
-    that.getweixinData();
+    app.globalData.unionId = wx.getStorageSync("unionId");
+    if (app.globalData.unionId==''){
+      console.log("wx getStorage not save unionId");
+      that.getweixinData();
+    }else{
+      app.globalData.bindPhone = wx.getStorageSync("bindPhone");
+      console.log("wx getStorage :" + app.globalData.unionId);
+    }    
   },
   //-------------- onload --------------
 
@@ -95,8 +102,7 @@ Page({
     console.log("getweixinData encry : " + encry);
     // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
     wx.request({
-      url: 'http://192.168.1.20:9000/XiaoManyao/weixinAuthInter',
-      // url: 'https://www.lanbaoai.cn/XiaoManyao/weixinAuthInter',
+      url: app.globalData.serverUrl +'weixinAuthInter',
       data: { msgtype: "getunionId", usercode: code, userencryData: encry },
       method: "post",
       header: {
@@ -107,6 +113,8 @@ Page({
         app.globalData.unionId = data.unionId;
         app.globalData.bindPhone = data.phone;
         console.log(res.data);
+        wx.setStorageSync('unionId', data.unionId),
+        wx.setStorageSync('bindPhone', data.phone)
       },
     })
   }

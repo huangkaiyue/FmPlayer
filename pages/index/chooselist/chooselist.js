@@ -57,7 +57,7 @@ Page({
     console.log("formId: " + myformId);
 
     wx.request({
-      url: 'https://www.lanbaoai.cn/XiaoManyao/weixinAuthInter',
+      url: app.globalData.serverUrl+'weixinAuthInter',
       data: { 
         msgtype: "pushMsg", 
         dir: "wxToDev", 
@@ -108,7 +108,7 @@ Page({
     console.log("formId: "+ myformId);
     
     wx.request({
-      url: 'https://www.lanbaoai.cn/XiaoManyao/weixinAuthInter',
+      url: app.globalData.serverUrl+'weixinAuthInter',
       data: {
         msgtype: "pushMsg",
         dir: "wxToDev",

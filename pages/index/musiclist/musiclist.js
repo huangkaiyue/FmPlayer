@@ -31,8 +31,7 @@ Page({
 
     var that = this;
     wx.request({
-      //url: 'http://192.168.1.20:9000/XiaoManyao/music?method=Albumlist&index=' + options.playIndex,
-      url: 'https://www.lanbaoai.cn/XiaoManyao/music?method=Albumlist&index=' + options.playIndex,
+      url: app.globalData.serverUrl+'music?method=Albumlist&index=' + options.playIndex,
       data: {
       },
       header: {
