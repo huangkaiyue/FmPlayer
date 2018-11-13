@@ -1,5 +1,4 @@
 var util = require('../../utils/util.js')
-let str1 = JSON.stringify();
 var app = getApp();
 Page({
 
@@ -7,15 +6,14 @@ Page({
   },
   data: {
     uhide: 0,
-    movies: [
+    push_picture: [                                                                          
       { url: 'http://img04.tooopen.com/images/20130712/tooopen_17270713.jpg' },
       { url: 'http://img04.tooopen.com/images/20130617/tooopen_21241404.jpg' },
       { url: 'http://img04.tooopen.com/images/20130701/tooopen_20083555.jpg' },
       { url: 'http://img02.tooopen.com/images/20141231/sy_78327074576.jpg' }
     ],
     totalDataCount: 0, // 总数据条数
-    currentPage: 0,
-    articles: [], // 存放所有的文章  
+    currentPage: 0, 
     likestatus:true
     
   },
@@ -24,17 +22,7 @@ Page({
 * 生命周期函数--监听页面加载
 */
   onLoad: function (options) {
-    var that = this
-        
-    //  加载网络数据 
-    that.loadNetworkData();
-
-    // setTimeout(function () {
-    //   console.log('延时两秒进行的操作')
-    // }, 2000)
-    // 加载本地数据
-    //that.loadlocalData(); 
-
+    this.loadNetworkData();//  加载网络数据
   },
 
   loadNetworkData: function(){
@@ -68,8 +56,11 @@ Page({
           totalDataCount: totalDataCount,
           
         })
+      },
+      fail: function (res) {
+        app.loadNetworkFailedTips('加载用户数据失败，请检查网络');
       }
-    
+
     })
   },
 
@@ -94,7 +85,7 @@ Page({
       success: function (res) {
         wx.hideLoading();
         var data = res.data; // 接口相应的json数据
-        var Album = data.Album; // 接口中的data对应了一个数组，这里取名为 articles
+        var Album = data.Album; // 接口中的data对应了一个数组
         var totalDataCount = Album.length;
         var index = Album.index;
        
@@ -113,6 +104,15 @@ Page({
           totalDataCount: totalDataCount,
         })
       },
+      fail: function (res) {
+        console.log('request server  failed'),
+          wx.hideLoading();
+          wx.showToast({
+          title: '请检查网络',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
   /**

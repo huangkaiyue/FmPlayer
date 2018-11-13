@@ -10,7 +10,7 @@
   </view>
 
     <swiper class="swiper" indicator-dots="true" autoplay="true" circular="true" interval="5000" duration="1000">  
-      <block wx:for="{{movies}}" wx:for-index="index">  
+      <block wx:for="{{push_picture}}" wx:for-index="index">  
         <swiper-item>  
           <image src="{{item.url}}" class="slide-image" mode="aspectFill"/>  
         </swiper-item>  

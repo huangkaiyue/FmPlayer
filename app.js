@@ -54,31 +54,14 @@ App({
     })
   },
 
-
-  //获取unionId /openid
-  getServerUserData: function () {
-    var that = this
-    console.log("获取unionId,openid");
-    var code = app.globalData.userCode;
-    var encry = app.globalData.encryData;
-    console.log("test code : " + code);
-    console.log("test encry : " + encry);
-    // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
-    wx.request({
-
-      url: app.globalData.serverUrl + 'weixinAuthInter',
-      data: { msgtype: "getunionId", usercode: code, userencryData: encry },
-      method: "post",
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        var data = res.data; // 接口相应的json数据
-        app.globalData.unionId = data.unionId;
-        console.log(data);
-
-      },
-    })
+  loadNetworkFailedTips:function(showStr){
+    wx.hideLoading();
+    console.log('request server  failed'),
+      wx.showToast({
+      title: showStr,
+        icon: 'none',
+        duration: 2000
+      })  
   },
 
   globalData: {

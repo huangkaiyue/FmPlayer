@@ -16,10 +16,9 @@ Page({
       this.setData({
         inputDevTxt: app.globalData.bindPhone
       })
-      that.getDevListData();
+      that.getDevListData(app.globalData.bindPhone);
     }else{
       console.log("not bind user phone " );
-      that.getDevListData();
     }
   },
   
@@ -69,6 +68,7 @@ Page({
   },
     
   devsnInput: function (e) {//获取用户输入手机号
+  var that =this
     this.setData({
       usrPhone: e.detail.value,
     })
@@ -103,17 +103,33 @@ Page({
       duration: 1500
     });
 
-    console.log("start upload: " + this.data.usrPhone)
+    console.log("start upload: " + this.data.usrPhone),
+    wx.request({
+      url: app.globalData.serverUrl + 'weixinAuthInter',
+      data: { msgtype: "bindsn", unionId: app.globalData.unionId, phone: this.data.usrPhone },
+      method: "post",
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data);
+        app.globalData.bindPhone = this.data.usrPhone;
+        wx.setStorageSync('bindPhone', app.globalData.bindPhone);
+        that.setData({
+          
+        })
+      },
+    })
   },
   //获取unionId /openid
-  getDevListData: function () {
+  getDevListData: function (phoneNumberStr) {
     var that = this
+    var unionId = app.globalData.unionId;
+    var phone = phoneNumberStr;
 
-    // var unionId = app.globalData.unionId;
-    // var phone = app.globalData.bindPhone;
-    var unionId = 'oXuHx5FURQodw9XRMim76BB7Pquk';
-    var phone = '13688999416';
-    // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
+    // var unionId = 'oXuHx5FURQodw9XRMim76BB7Pquk';
+    // var phone = '13688999416';
+
     wx.request({
       url: app.globalData.serverUrl +'weixinAuthInter',
       data: { msgtype: "scandev", unionId: unionId, phone: phone },
@@ -122,10 +138,9 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log("1111111111111查询设备列表1111111111111111");
         console.log(res);
         console.log(res.data.devsn);
-
+        
         that.setData({
           names: res.data.devsn
         })

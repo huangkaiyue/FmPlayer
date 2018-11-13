@@ -53,14 +53,10 @@ Page({
         }
       })
     }
-    app.globalData.unionId = wx.getStorageSync("unionId");
-    if (app.globalData.unionId==''){
-      console.log("wx getStorage not save unionId");
-      that.getweixinData();
-    }else{
-      app.globalData.bindPhone = wx.getStorageSync("bindPhone");
-      console.log("wx getStorage :" + app.globalData.unionId);
-    }    
+    // if (app.globalData.unionId == '') {  //从服务器更新获取unionId
+      
+      that.getWxUnionId();
+    // }
   },
   //-------------- onload --------------
 
@@ -93,14 +89,13 @@ Page({
       url: './userActivity/userActivity',
     })
   },
-  //获取unionId /openid
-  getweixinData:function() {
+  
+  getWxUnionId: function () {//获取unionId /openid
     var that = this
     var code = app.globalData.userCode;
     var encry = app.globalData.encryData;
-    console.log("getweixinData code : " + code);
-    console.log("getweixinData encry : " + encry);
-    // 请封装自己的网络请求接口，这里作为示例就直接使用了wx.request.
+    console.log("getWxUnionId code : " + code);
+    console.log("getWxUnionId encry : " + encry);
     wx.request({
       url: app.globalData.serverUrl +'weixinAuthInter',
       data: { msgtype: "getunionId", usercode: code, userencryData: encry },
@@ -113,9 +108,12 @@ Page({
         app.globalData.unionId = data.unionId;
         app.globalData.bindPhone = data.phone;
         console.log(res.data);
-        wx.setStorageSync('unionId', data.unionId),
+        wx.setStorageSync('unionId', data.unionId); //保存unionId 和bindPhone 到本地
         wx.setStorageSync('bindPhone', data.phone)
       },
+      fail: function(res){
+        app.loadNetworkFailedTips('加载用户数据失败，请检查网络');
+      }
     })
   }
 })
